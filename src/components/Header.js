@@ -6,12 +6,12 @@ class Header extends Component {
     render() {
         return (
             <div style={Styles.navbar}>
-                <img style={Styles.logo} src="../assets/css-icon.png" alt=""></img>
+                <img style={Styles.logo} src={require("../assets/html-icon.png")} alt="Logo" />
                 <ul style={Styles.navLinksContainer}>
-                  <Link to="/"><li style={Styles.navLink}>Home</li></Link>
-                  <Link to="/about"><li style={Styles.navLink}>About</li></Link>
-                  <Link to=""><li style={Styles.navLink}>How It Works</li></Link>
-                  <a href=""><li style={Styles.navLink}>Sign In</li></a>
+                  <Link to="/" style={Styles.linkDecoration}><li style={Styles.navLink} key="key1">Home</li></Link>
+                  <Link to="/about" style={Styles.linkDecoration}><li style={Styles.navLink} key="key2">About</li></Link>
+                  <Link to="/howitworks" style={Styles.linkDecoration}><li style={Styles.navLink} key="key3">How It Works</li></Link>
+                  <Link to="/signin" style={Styles.linkDecoration}><li style={Styles.navLink} key="key4">Sign In</li></Link>
                 </ul>
                 
             </div>
@@ -29,9 +29,7 @@ var Styles = {
     justifyContent: 'space-between',
     alignItems: 'center',
     position: 'fixed',
-    ':hover' : {
-        color: 'black'
-    }
+    zIndex: '100'
     },
     
     logo: {
@@ -49,6 +47,13 @@ var Styles = {
         //edit font here
         color: 'white',
         cursor: 'pointer',
+        fontDecoration: 'none',
+        ':hover' : {
+            color: 'blue',
+        }
+    },
+    linkDecoration: {
+        textDecoration: 'none'
     }
 
 }
