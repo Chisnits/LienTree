@@ -6,7 +6,7 @@ class Header extends Component {
     render() {
         return (
             <div style={Styles.navbar}>
-                <img style={Styles.logo} src={require("../assets/html-icon.png")} alt="Logo" />
+                <Link to="/"><img style={Styles.logo} src={require("../assets/html-icon.png")} alt="Logo" /></Link>
                 <ul style={Styles.navLinksContainer}>
                   <Link to="/" style={Styles.linkDecoration}><li style={Styles.navLink} key="key1">Home</li></Link>
                   <Link to="/about" style={Styles.linkDecoration}><li style={Styles.navLink} key="key2">About</li></Link>
@@ -58,7 +58,7 @@ var Styles = {
 
 }
 
-const MyStyledComponent = Radium(Header)
+const StyledHeader = Radium(Header)
 
 
-export default MyStyledComponent;
+export default StyledHeader;

@@ -7,7 +7,6 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 import Header from './components/Header';
-import Footer from './components/Footer';
 import About from './components/About';
 import HowItWorks from './components/HowItWorks';
 import SignIn from './components/SignIn';
@@ -22,7 +21,6 @@ ReactDOM.render(
                 <Route path="/signin" component= { SignIn } />
                 <Route exact path="/" component= { App } />
             </Switch>
-                <Route component={ Footer }/>
         </div>
     </BrowserRouter>,
 document.getElementById('root'));
