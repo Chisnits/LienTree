@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Radium from 'radium';
 
 class LandingPage extends Component {
     render() {
@@ -7,6 +8,7 @@ class LandingPage extends Component {
           <section>
             <div style={Styles.homeImage}>
               <div style={Styles.textBox}>
+                <h1>Lien Tree</h1>
                 <p>Lien Tree is an auction based marketplace that
                   connects medical providers of account receivables
                   to a broad network of third party medical finance
@@ -17,7 +19,7 @@ class LandingPage extends Component {
             </div>
           </section>
           <section style={Styles.bottomHalf}>
-            <div>
+            <div style={Styles.column} key={1}>
               <div style={Styles.titleContainer}>
                 <img style={Styles.icon} src={require("../assets/html-icon.png")} alt="icon"/>
                 <p style={Styles.title}>Accounts Receivable Management Services</p>
@@ -28,7 +30,7 @@ class LandingPage extends Component {
                     the entire process. This ensures timely and maximization of your A/R.
                   </p>
             </div>      
-            <div>
+            <div style={Styles.column} key={2}>
               <div style={Styles.titleContainer}>
                 <img style={Styles.icon} src={require("../assets/html-icon.png")} alt="icon"/>
                 <p style={Styles.title}>Portfolio Price <br/>
@@ -41,7 +43,7 @@ class LandingPage extends Component {
                     account receivables.
                   </p>
             </div>      
-            <div>
+            <div style={Styles.column} key={3}>
               <div style={Styles.titleContainer}>
                 <img style={Styles.icon} src={require("../assets/html-icon.png")} alt="icon"/>
                 <p style={Styles.title}>Account Liquidation</p>
@@ -63,7 +65,7 @@ class LandingPage extends Component {
       // height: '70vh'
     },
     homeImage: {
-      height: '70vh',
+      height: '65vh',
       width: '100%',
       backgroundImage: `url(${require("../assets/homeFiller.jpg")})`,
       backgroundSize: 'cover',
@@ -85,7 +87,7 @@ class LandingPage extends Component {
       marginLeft: '12vw'
     },
     bottomHalf: {
-      marginTop: '15px',
+      marginTop: '30px',
       height: '25vh',
       width: '100vw',
       display: 'flex',
@@ -95,8 +97,19 @@ class LandingPage extends Component {
       height: '50px',
       width: '50px',
     },
+    column: {
+      height: '21vh',
+      border: '2px solid black',
+      borderRadius: '25px',
+      padding: '20px',
+      boxShadow: '10px 10px 10px #888888',
+      ':hover' : {
+        backgroundColor: '#99ddff',
+    }
+    },
     titleContainer: {
       width: '15vw',
+      height: '7vh',
       maxWidth:'50%',
       minWidth:'300px',
       maxHeight:'500px',
@@ -115,4 +128,6 @@ class LandingPage extends Component {
     },
   }
 
-export default LandingPage;
+  const StyledLandingPage = Radium(LandingPage)
+
+export default StyledLandingPage;

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import LandingPage from './components/LandingPage'
+import StyledLandingPage from './components/LandingPage'
 
 class App extends Component {
   render() {
     return (
-       <LandingPage />
+       <StyledLandingPage />
     );
   }
 }

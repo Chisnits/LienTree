@@ -8,7 +8,7 @@ class About extends Component {
                 <div style={Styles.mainImage}></div>
                     <div style={Styles.paragraphWrapper}>
                         <div style={Styles.paragraphContainer}>
-                            <p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
                                 totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
                                 Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
                                 qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
@@ -19,9 +19,9 @@ class About extends Component {
                         </div>
                     </div>
                     <div style={Styles.subImageContainer}>
-                        <img src={require("../assets/html-icon.png")} alt=""/>
-                        <img src={require("../assets/html-icon.png")} alt=""/>
-                        <img src={require("../assets/html-icon.png")} alt=""/>
+                        <img src={require("../assets/html-icon.png")} alt="" style={Styles.icon}/>
+                        <img src={require("../assets/html-icon.png")} alt="" style={Styles.icon}/>
+                        <img src={require("../assets/html-icon.png")} alt="" style={Styles.icon}/>
                     </div>
                 <main style={Styles.footerWrapper}>
                     <div style={Styles.followUs}>
@@ -36,28 +36,36 @@ class About extends Component {
                     <div className="mailing-list">
                         <Newsletter />
                     </div>
+                    <div>
+                      <h2>Contact Us</h2>
+                        <div>
+                          <div>Lein Tree Email</div>
+                        </div>
+                  </div>
                 </main>
-                <div className="copyright-wrapper">
-                    <div>Copyright © | <span className="site-name">Lien Tree</span> | All Rights Reserved</div>
-                </div>
         </section>
     );
 }
 }
     var Styles = {
         mainImage: {
-            height: '50vh',
+            height: '45vh',
             backgroundImage: `url(${require("../assets/aboutFiller.jpg")})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center'
         },
         paragraphWrapper: {
             display:'flex',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            margin: '20px'
         },
         paragraphContainer: {
             width: '100%',
-            textAlign: 'left'
+            textAlign: 'left',
+            border: '2px solid black',
+            borderRadius: '25px',
+            boxShadow: '10px 10px 10px #888888',
+            padding: '20px'
         },
         footerWrapper: {
             width: '100%',
@@ -71,6 +79,10 @@ class About extends Component {
             display: 'flex',
             justifyContent: 'space-evenly',
             marginBottom: '5px'
+        },
+        icon: {
+            height: '10vh',
+            width: '10vw'
         },
         followUs: {
             display: 'flex',
