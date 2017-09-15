@@ -17,6 +17,7 @@ var db = massive.connectSync({
 const app = module.exports = express();
 app.set('db', db)
 
+app.use(express.static('../build'))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session(config.mySecret))
@@ -26,19 +27,26 @@ app.use(cors());
 
 //========================== Auth0 =============================//
 passport.use(new Auth0Strategy(config.authPass, function(accessToken, refreshToken, extraParams, profile, done) {
-    db.getUsers([profile.emails[0].value], function(err, user) {
-      if (!user[0]) {
-        console.log('creating user');
-        db.storeUser([profile.emails[0].value], function(err, user) {
-          console.log('user created', user)
-          return done(err, user)
+  // console.log('Profile', profile)
+  // console.log('Login Type', profile.identities[0].connection)
+    if(profile.identities[0].connection === 'facebook'){
+      
+      
+    }
+        db.getUsers([profile.emails[0].value], function(err, user) {
+          console.log("user", user);
+          if (!user[0]) {
+            console.log('creating user');
+            db.storeUser([profile.emails[0].value], function(err, user) {
+              console.log('user created', user)
+              return done(err, user)
+            })
+          }
+          else {
+            console.log('found user', user);
+            return done(err, user);
+          }
         })
-      }
-      else {
-        console.log('found user', user);
-        return done(err, user);
-      }
-    })
 }))
 
 app.get('/auth', passport.authenticate('auth0')); //START
@@ -98,7 +106,7 @@ app.post('/contactus', function(req, res){
 
 
 app.get('*', function (request, response){
-  response.sendFile(path.join(__dirname, '.././build/', 'index.html'))
+  response.sendFile(path.join(__dirname, '../build', 'index.html'))
 })
      
 
