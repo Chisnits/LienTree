@@ -6,12 +6,14 @@ class Header extends Component {
     render() {
         return (
             <div style={Styles.navbar}>
-                <Link to="/"><img style={Styles.logo} src={require("../assets/html-icon.png")} alt="Logo" /></Link>
+                <Link to="/"><img style={Styles.logo} src={require("../assets/LienTreeBackground.jpg")} alt="Logo" /></Link>
                 <ul style={Styles.navLinksContainer}>
-                  <Link to="/" style={Styles.linkDecoration}><li style={Styles.navLink} key="key1">Home</li></Link>
-                  <Link to="/about" style={Styles.linkDecoration}><li style={Styles.navLink} key="key2">About</li></Link>
-                  <Link to="/howitworks" style={Styles.linkDecoration}><li style={Styles.navLink} key="key3">How It Works</li></Link>
-                  <Link to="/signin" style={Styles.linkDecoration}><li style={Styles.navLink} key="key4">Sign In</li></Link>
+                    <Link to="/" style={Styles.linkDecoration}><li style={Styles.navLink} key="key1">Home</li></Link>
+                    <Link to="/about" style={Styles.linkDecoration}><li style={Styles.navLink} key="key2">About</li></Link>
+                    <Link to="/howitworks" style={Styles.linkDecoration}><li style={Styles.navLink} key="key3">How It Works</li></Link>
+                    <Link to="/signin" style={Styles.linkDecoration}><li style={Styles.navLink} key="key4">Sign In</li></Link>
+                    <a href="/auth"><li style={Styles.navLink}>Login/Register</li></a>
+                    <Link to="/profile" style={Styles.linkDecoration}><li style={Styles.navLink} key="key5">Profile</li></Link>
                 </ul>
                 
             </div>
@@ -23,8 +25,7 @@ var Styles = {
     navbar : {
     width: '100%',
     height: '10vh',
-    backgroundColor: 'black',
-    opacity: .5,
+    backgroundColor: 'white',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -33,8 +34,9 @@ var Styles = {
     },
     
     logo: {
-        width: '150px',
-        height: '10vh'
+        width: '20vw',
+        height: '10vh',
+        margin: '5px 0 0 20px'
     },
     navLinksContainer: {
         width: '55vw',
@@ -45,9 +47,10 @@ var Styles = {
     },
     navLink: {
         //edit font here
-        color: 'white',
+        color: 'black',
         cursor: 'pointer',
         fontDecoration: 'none',
+        textDecoration: 'none',
         ':hover' : {
             color: 'blue',
         }

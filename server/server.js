@@ -4,11 +4,63 @@ const express = require('express')
 , session = require('express-session')
 , cors = require('cors')
 , nodemailer = require("nodemailer")
+, path = require('path')
+, passport = require('passport')
+, Auth0Strategy = require('passport-auth0')
+, config = require('./config')
 
+
+//========================== Initialize App =============================//
+var db = massive.connectSync({
+  connectionString: config.massiveConnection
+});
 const app = module.exports = express();
+app.set('db', db)
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(session(config.mySecret))
+app.use(passport.initialize())
+app.use(passport.session())
 app.use(cors());
+
+//========================== Auth0 =============================//
+passport.use(new Auth0Strategy(config.authPass, function(accessToken, refreshToken, extraParams, profile, done) {
+    db.getUsers([profile.emails[0].value], function(err, user) {
+      if (!user[0]) {
+        console.log('creating user');
+        db.storeUser([profile.emails[0].value], function(err, user) {
+          console.log('user created', user)
+          return done(err, user)
+        })
+      }
+      else {
+        console.log('found user', user);
+        return done(err, user);
+      }
+    })
+}))
+
+app.get('/auth', passport.authenticate('auth0')); //START
+
+app.get('/auth/callback',
+  passport.authenticate('auth0', {
+    successRedirect: '/profile',
+    failureRedirect: '/'
+}))
+
+passport.serializeUser(function(user, done) {
+   done(null, user);
+})
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+})
+
+const userCtrl = require('./controllers/userCtrl')
+
+app.get('/me', userCtrl.me)
+
 
 
 //========================== NodeMailer =============================//
@@ -45,7 +97,10 @@ app.post('/contactus', function(req, res){
 
 
 
-
+app.get('*', function (request, response){
+  response.sendFile(path.join(__dirname, '.././build/', 'index.html'))
+})
+     
 
 const port = 5000
 

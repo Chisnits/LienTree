@@ -53,6 +53,7 @@ var Styles = {
         boxShadow: '10px 10px 10px #888888',
         padding: '20px',
         marginTop: '20px',
+        marginBottom: '20px'
     }
 }
 

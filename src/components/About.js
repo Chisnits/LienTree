@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Newsletter from './Newsletter';
 
 class About extends Component {
     render() {
@@ -23,26 +22,6 @@ class About extends Component {
                         <img src={require("../assets/html-icon.png")} alt="" style={Styles.icon}/>
                         <img src={require("../assets/html-icon.png")} alt="" style={Styles.icon}/>
                     </div>
-                <main style={Styles.footerWrapper}>
-                    <div style={Styles.followUs}>
-                        <h2>Follow Us</h2>
-                        <div>
-                            <i className="fa fa-facebook-square" style={Styles.socialIcon} aria-hidden="true"></i>
-                            <i className="fa fa-instagram" style={Styles.socialIcon} aria-hidden="true"></i>
-                            <i className="fa fa-twitter-square" style={Styles.socialIcon} aria-hidden="true"></i>
-                            <i className="fa fa-youtube-play" style={Styles.socialIcon} aria-hidden="true"></i>
-                        </div>
-                    </div>
-                    <div className="mailing-list">
-                        <Newsletter />
-                    </div>
-                    <div>
-                      <h2>Contact Us</h2>
-                        <div>
-                          <div>Lein Tree Email</div>
-                        </div>
-                  </div>
-                </main>
         </section>
     );
 }
@@ -67,13 +46,6 @@ class About extends Component {
             boxShadow: '10px 10px 10px #888888',
             padding: '20px'
         },
-        footerWrapper: {
-            width: '100%',
-            backgroundColor: '#1D1D1D',
-            display: 'flex',
-            justifyContent: 'space-around',
-            padding: '3vh 0'
-        },
         subImageContainer: {
             width: '100%',
             display: 'flex',
@@ -83,15 +55,6 @@ class About extends Component {
         icon: {
             height: '10vh',
             width: '10vw'
-        },
-        followUs: {
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center'
-        },
-        socialIcon: {
-            fontSize: '3em',
-            margin: '0 5px'
         }
     }
 

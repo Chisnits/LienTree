@@ -21,7 +21,7 @@ class LandingPage extends Component {
           <section style={Styles.bottomHalf}>
             <div style={Styles.column} key={1}>
               <div style={Styles.titleContainer}>
-                <img style={Styles.icon} src={require("../assets/html-icon.png")} alt="icon"/>
+                <img style={Styles.icon} src={require("../assets/LienTreeIcon.png")} alt="icon"/>
                 <p style={Styles.title}>Accounts Receivable Management Services</p>
               </div>
                   <p style={Styles.paragraph}>
@@ -32,7 +32,7 @@ class LandingPage extends Component {
             </div>      
             <div style={Styles.column} key={2}>
               <div style={Styles.titleContainer}>
-                <img style={Styles.icon} src={require("../assets/html-icon.png")} alt="icon"/>
+                <img style={Styles.icon} src={require("../assets/LienTreeIcon.png")} alt="icon"/>
                 <p style={Styles.title}>Portfolio Price <br/>
                 analysis/evaluation for AR sale</p>
               </div>
@@ -45,7 +45,7 @@ class LandingPage extends Component {
             </div>      
             <div style={Styles.column} key={3}>
               <div style={Styles.titleContainer}>
-                <img style={Styles.icon} src={require("../assets/html-icon.png")} alt="icon"/>
+                <img style={Styles.icon} src={require("../assets/LienTreeIcon.png")} alt="icon"/>
                 <p style={Styles.title}>Account Liquidation</p>
               </div>
                   <p style={Styles.paragraph}>
@@ -92,6 +92,7 @@ class LandingPage extends Component {
       width: '100vw',
       display: 'flex',
       justifyContent: 'space-around',
+      marginBottom: '30px'
     },
     icon: {
       height: '50px',
