@@ -4,9 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 // import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
 import {unregister} from './registerServiceWorker';
-import { requireAuth } from './utils/AuthService';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -21,7 +19,7 @@ ReactDOM.render(
             <Switch>
                 <Route path="/about" component= { About } />
                 <Route path="/howitworks" component= { HowItWorks }/>
-                <Route path="/profile" component= { Profile } />
+                <Route path="/profile" component= { Profile }/>
                 <Route exact path="/" component= { App } />
             </Switch>
             <Route component={ Footer } />

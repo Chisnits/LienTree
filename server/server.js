@@ -27,8 +27,8 @@ app.use(cors());
 
 //========================== Auth0 =============================//
 passport.use(new Auth0Strategy(config.authPass, function(accessToken, refreshToken, extraParams, profile, done) {
-  console.log('Profile', profile)
-  // console.log('Login Type', profile.identities[0].connection)
+  // console.log('access_token',extraParams.access_token);
+  // console.log('id_token',extraParams.id_token);
     if(profile.provider === 'facebook'){
       db.getUsers([profile.emails[0].value], function(err, user) {
         console.log("user", user);
@@ -62,18 +62,20 @@ passport.use(new Auth0Strategy(config.authPass, function(accessToken, refreshTok
       })
     }
     if(profile.provider === 'auth0'){
-      console.log("HERE I AM" , profile._json.identities[0]);
       db.getUsers([profile.emails[0].value], function(err, user) {
         console.log("user", user);
         if (!user[0]) {
           console.log('creating user');
           db.storeUser([profile.name.givenName, profile.name.familyName, profile.nickname, profile.emails[0].value, profile.picture], function(err, user) {
-            console.log('user created', user)
-            return done(err, user)
+            // console.log('user created', user)
+            // var newUser = Object.assign(user, extraParams.access_token, extraParams.id_token)
+            // console.log(newUser)
+              return done(err, user)
           })
         }
         else {
           console.log('found user', user);
+          // console.log()
           return done(err, user);
         }
       })
@@ -100,8 +102,16 @@ passport.deserializeUser(function(user, done) {
 const userCtrl = require('./controllers/userCtrl')
 
 app.get('/me', userCtrl.me)
-
-
+//========================== Logout =============================//
+app.get('/logout', function(req, res){
+  var name = req.user[0].user_first_name;
+  console.log("LOGGING OUT " + name);
+  req.logout();
+  res.redirect('/');
+  if(req.user === undefined){
+    res.redirect('/');
+  }
+});
 
 //========================== NodeMailer =============================//
 

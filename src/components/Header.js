@@ -11,8 +11,14 @@ class Header extends Component {
                     <Link to="/" style={Styles.linkDecoration}><li style={Styles.navLink} key="key1">Home</li></Link>
                     <Link to="/about" style={Styles.linkDecoration}><li style={Styles.navLink} key="key2">About</li></Link>
                     <Link to="/howitworks" style={Styles.linkDecoration}><li style={Styles.navLink} key="key3">How It Works</li></Link>
-                    <a href="/auth"><li style={Styles.navLink}>Login/Register</li></a>
-                    <Link to="/profile" style={Styles.linkDecoration}><li style={Styles.navLink} key="key4">Profile</li></Link>
+                    <a href="/auth"><li style={Styles.navLink} key="key4">Login/Register</li></a>
+                    <a href="/logout"><li style={Styles.navLink} key="key5">Logout</li></a>
+                    {/* {
+                        (isLoggedIn()) ? ( <button onClick={() => logout()}>Log out </button> ) : ( <button onClick={() => login()}>Log In</button> )
+                    } */}
+                    {/* {
+                       (isLoggedIn() ) ? <Link to="/profile" style={Styles.linkDecoration}><li style={Styles.navLink} key="key4">Profile</li></Link> : ''
+                    } */}
                 </ul>
                 
             </div>
