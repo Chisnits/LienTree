@@ -67,15 +67,12 @@ passport.use(new Auth0Strategy(config.authPass, function(accessToken, refreshTok
         if (!user[0]) {
           console.log('creating user');
           db.storeUser([profile.name.givenName, profile.name.familyName, profile.nickname, profile.emails[0].value, profile.picture], function(err, user) {
-            // console.log('user created', user)
-            // var newUser = Object.assign(user, extraParams.access_token, extraParams.id_token)
-            // console.log(newUser)
+            console.log('user created', user)
               return done(err, user)
           })
         }
         else {
           console.log('found user', user);
-          // console.log()
           return done(err, user);
         }
       })
@@ -104,15 +101,12 @@ const userCtrl = require('./controllers/userCtrl')
 app.get('/me', userCtrl.me)
 //========================== Logout =============================//
 app.get('/logout', function(req, res){
+  console.log('HERE',req.user)
   var name = req.user[0].user_first_name;
   console.log("LOGGING OUT " + name);
   req.logout();
   res.redirect('/');
-  if(req.user === undefined){
-    res.redirect('/');
-  }
 });
-
 //========================== NodeMailer =============================//
 
 app.post('/contactus', function(req, res){
