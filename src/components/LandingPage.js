@@ -67,9 +67,9 @@ class LandingPage extends Component {
     homeImage: {
       height: '65vh',
       width: '100%',
-      backgroundImage: `url(${require("../assets/homeFiller.jpg")})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
+      backgroundImage: `url(${require("../assets/home.jpg")})`,
+      backgroundSize: 'stretch',
+      backgroundPosition: 'top right',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',

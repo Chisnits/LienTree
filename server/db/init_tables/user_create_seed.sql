@@ -2,13 +2,14 @@
 
 CREATE TABLE IF NOT EXISTS users (
   id SERIAL PRIMARY KEY,
+  user_first_name VARCHAR(255),
+  user_last_name VARCHAR(255),
+  nickname VARCHAR(255),
   email VARCHAR(255),
-  password VARCHAR(255)
+  photo VARCHAR(255)
 );
 
 -- === INSERT STATEMENT ===============
 
-INSERT INTO users (email) VALUES
-('chasederr@gmail.com'),
-('maddiederr@gmail.com'),
-('violetderr@gmail.com');
+-- INSERT INTO users (user_first_name, user_last_name, email, photo) VALUES
+-- ('', '', '', '')

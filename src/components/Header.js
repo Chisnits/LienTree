@@ -11,9 +11,8 @@ class Header extends Component {
                     <Link to="/" style={Styles.linkDecoration}><li style={Styles.navLink} key="key1">Home</li></Link>
                     <Link to="/about" style={Styles.linkDecoration}><li style={Styles.navLink} key="key2">About</li></Link>
                     <Link to="/howitworks" style={Styles.linkDecoration}><li style={Styles.navLink} key="key3">How It Works</li></Link>
-                    <Link to="/signin" style={Styles.linkDecoration}><li style={Styles.navLink} key="key4">Sign In</li></Link>
                     <a href="/auth"><li style={Styles.navLink}>Login/Register</li></a>
-                    <Link to="/profile" style={Styles.linkDecoration}><li style={Styles.navLink} key="key5">Profile</li></Link>
+                    <Link to="/profile" style={Styles.linkDecoration}><li style={Styles.navLink} key="key4">Profile</li></Link>
                 </ul>
                 
             </div>

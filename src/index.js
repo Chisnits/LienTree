@@ -5,13 +5,13 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+import {unregister} from './registerServiceWorker';
 import { requireAuth } from './utils/AuthService';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
 import About from './components/About';
 import HowItWorks from './components/HowItWorks';
-import SignIn from './components/SignIn';
 import Profile from './components/Profile';
 
 ReactDOM.render(
@@ -21,7 +21,6 @@ ReactDOM.render(
             <Switch>
                 <Route path="/about" component= { About } />
                 <Route path="/howitworks" component= { HowItWorks }/>
-                <Route path="/signin" component= { SignIn } />
                 <Route path="/profile" component= { Profile } />
                 <Route exact path="/" component= { App } />
             </Switch>
@@ -29,4 +28,4 @@ ReactDOM.render(
         </div>
     </BrowserRouter>,
 document.getElementById('root'));
-registerServiceWorker();
+unregister()

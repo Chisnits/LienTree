@@ -1,2 +1,2 @@
-INSERT INTO users (email)
-VALUES ($1)
+INSERT INTO users (user_first_name, user_last_name, nickname, email, photo)
+VALUES ($1, $2, $3, $4, $5)

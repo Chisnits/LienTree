@@ -27,26 +27,58 @@ app.use(cors());
 
 //========================== Auth0 =============================//
 passport.use(new Auth0Strategy(config.authPass, function(accessToken, refreshToken, extraParams, profile, done) {
-  // console.log('Profile', profile)
+  console.log('Profile', profile)
   // console.log('Login Type', profile.identities[0].connection)
-    if(profile.identities[0].connection === 'facebook'){
-      
-      
+    if(profile.provider === 'facebook'){
+      db.getUsers([profile.emails[0].value], function(err, user) {
+        console.log("user", user);
+        if (!user[0]) {
+          console.log('creating user');
+          db.storeUser([profile.name.givenName, profile.name.familyName, profile.nickname, profile.emails[0].value, profile._json.picture_large], function(err, user) {
+            console.log('user created', user)
+            return done(err, user)
+          })
+        }
+        else {
+          console.log('found user', user);
+          return done(err, user);
+        }
+      })
     }
-        db.getUsers([profile.emails[0].value], function(err, user) {
-          console.log("user", user);
-          if (!user[0]) {
-            console.log('creating user');
-            db.storeUser([profile.emails[0].value], function(err, user) {
-              console.log('user created', user)
-              return done(err, user)
-            })
-          }
-          else {
-            console.log('found user', user);
-            return done(err, user);
-          }
-        })
+    if(profile.provider === 'google-oauth2'){
+      db.getUsers([profile.emails[0].value], function(err, user) {
+        console.log("user", user);
+        if (!user[0]) {
+          console.log('creating user');
+          db.storeUser([profile.name.givenName, profile.name.familyName, profile.nickname, profile.emails[0].value, profile.picture], function(err, user) {
+            console.log('user created', user)
+            return done(err, user)
+          })
+        }
+        else {
+          console.log('found user', user);
+          return done(err, user);
+        }
+      })
+    }
+    if(profile.provider === 'auth0'){
+      console.log("HERE I AM" , profile._json.identities[0]);
+      db.getUsers([profile.emails[0].value], function(err, user) {
+        console.log("user", user);
+        if (!user[0]) {
+          console.log('creating user');
+          db.storeUser([profile.name.givenName, profile.name.familyName, profile.nickname, profile.emails[0].value, profile.picture], function(err, user) {
+            console.log('user created', user)
+            return done(err, user)
+          })
+        }
+        else {
+          console.log('found user', user);
+          return done(err, user);
+        }
+      })
+    }
+
 }))
 
 app.get('/auth', passport.authenticate('auth0')); //START
