@@ -33,6 +33,13 @@ class Profile extends Component {
                         <div>Email: {this.state.user.email}</div>
                     </div>
                 </div>
+                <form style={Styles.formContainer} onSubmit={this.handleSubmit}>
+                    <input id="input" type="" placeholder="" required/>
+                    <input id="input" type="" placeholder="" required/>
+                    <input id="input" type="" placeholder="" required/>
+                    <input id="input" type="" placeholder="" required/>
+                    <input id="submit" type="submit"/>
+              </form>
             </div>
         );
     }
